@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Session Purchase History{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Session Purchase History for {{ current_user.username }}</h2>
+    {% if items %}
+    <table class="table table-dark table-hover mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Barcode</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.barcode }}</td>
+                <td>{{ item.price }}$</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No items purchased yet in this session.</p>
+    {% endif %}
+</div>
+{% endblock %}
